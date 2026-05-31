@@ -15,7 +15,7 @@
 #include <vector>
 #include <cmath>
 
-namespace MegaCharizardY {
+namespace Project {
 
 /**
  * @brief Represents a single particle in the dynamic physics simulation system.

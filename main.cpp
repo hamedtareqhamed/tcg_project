@@ -10,7 +10,7 @@
 #include "charizardy.hpp"
 using charizardx::MyVirtualWorld;
 //hamed: Global instance of the Charizard Y virtual world
-MegaCharizardY::MyVirtualWorld myvirtualworld_y;
+Project::MyVirtualWorld myvirtualworld_y;
 // Global instance of the Charizard X virtual world
 MyVirtualWorld myvirtualworld;
 
