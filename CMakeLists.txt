@@ -5,7 +5,7 @@ project(CharizardProject CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# البحث عن مكتبات OpenGL و GLUT و GLU
+
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 
@@ -23,7 +23,6 @@ set(HEADERS
 
 add_executable(CharizardApp ${SOURCES} ${HEADERS})
 
-# ربط البرنامج التنفيذي بالمكتبات بالصيغة الحديثة
 target_link_libraries(CharizardApp 
     OpenGL::GL
     OpenGL::GLU
