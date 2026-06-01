@@ -9,12 +9,11 @@
 #include "MyDetailedBlastoise.hpp"
 //#include "Project.hpp"
 
-using charizardx::MyVirtualWorld;
-//using BlastoiseLab::MyVirtualWorld;
 //using Project::MyVirtualWorld;
 
-// Global instance of the Charizard X virtual world
-MyVirtualWorld myvirtualworld;
+// Global instances of the virtual worlds
+charizardx::MyVirtualWorld myvirtualworld_charizard;
+BlastoiseLab::MyVirtualWorld myvirtualworld_blastoise;
 
 using namespace std;
 
@@ -43,8 +42,15 @@ void myDisplayFunc(void)
     // Render the XYZ reference axis
     worldaxis.draw();
 
-    // Render the Charizard X model and environment
-    myvirtualworld.draw();
+    glPushMatrix();
+    glTranslatef(-15.0f, 0.0f, 0.0f);
+    myvirtualworld_charizard.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(15.0f, 0.0f, 0.0f);
+    myvirtualworld_blastoise.draw();
+    glPopMatrix();
 
  glPopMatrix();
 
@@ -53,7 +59,8 @@ void myDisplayFunc(void)
  glutSwapBuffers();
 
  // Update animation timers and request a screen redraw for continuous animation
- myvirtualworld.tickTime();
+ myvirtualworld_charizard.tickTime();
+ myvirtualworld_blastoise.tickTime();
  glutPostRedisplay();
 }
 
@@ -84,11 +91,14 @@ void myKeyboardFunc(unsigned char key, int x, int y)
 
     //case 'c': case 'C': myvirtualworld.charizard.castSkill(); break;
 
-    // Toggle animations for Charizard X
-    case 'r': case 'R': myvirtualworld.toggleWalking(); break;
-    case 'f': case 'F': myvirtualworld.toggleFireBreath(); break;
-    case 'g': case 'G': myvirtualworld.toggleFlying(); break;
-    case 'o': case 'O': myvirtualworld.triggerBoxOpen(); break;
+    // Toggle animations for Charizard X and Blastoise
+    case 'r': case 'R': myvirtualworld_charizard.toggleWalking(); break;
+    case 'f': case 'F': myvirtualworld_charizard.toggleFireBreath(); break;
+    case 'g': case 'G': myvirtualworld_charizard.toggleFlying(); break;
+    case 'o': myvirtualworld_charizard.triggerBoxOpen(); break;
+    case 'O': myvirtualworld_blastoise.triggerBoxOpen(); break;
+    case 'c': case 'C': myvirtualworld_blastoise.castBlastoiseSkill(); break;
+    case 'b': case 'B': myvirtualworld_blastoise.toggleBattlePhase(); break;
 
     case 27  : exit(1); break; // ESC to exit
  }
@@ -314,16 +324,17 @@ void myInit()
  myViewingInit();
  myLightingInit();
 
- // Initialize the Mega Charizard X model
- myvirtualworld.init();
+ // Initialize the models
+ myvirtualworld_charizard.init();
+ myvirtualworld_blastoise.init();
 }
 
 // Print control instructions to the console
 void myWelcome()
 {
  cout << "*****************************************************************\n";
- cout << "* TCG6223 Computer Graphics                   *\n";
- cout << "* FIST, Multimedia University                  *\n";
+ cout << "* TCG6223 Computer Graphics                                     *\n";
+ cout << "* FIST, Multimedia University                                   *\n";
  cout << "*****************************************************************\n";
  cout << "| Press:                                                        |\n";
  cout << "|   <a>,<d>,<w>,<s>,<q>,<e> => move world                       |\n";
@@ -338,7 +349,7 @@ void myWelcome()
  cout << "|                                                               |\n";
  cout << "| Mouse (Left Drag or Right Drag) => rotate world               |\n";
  cout << "| Character Actions:                                            |\n";
- cout << "|   <o>                    => Open Blind Box (Reveal!)          |\n";
+ cout << "|   <o> <O>                => Open Blind Box (Reveal!)          |\n";
  cout << "|   <r>                    => toggle Charizard X walking        |\n";
  cout << "|   <g>                    => toggle Charizard X flying         |\n";
  cout << "|   <f>                    => trigger Blue Flare (Dragon Breath)|\n";
