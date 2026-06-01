@@ -43,12 +43,12 @@ void myDisplayFunc(void)
     worldaxis.draw();
 
     glPushMatrix();
-    glTranslatef(-15.0f, 0.0f, 0.0f);
+    glTranslatef(-70.0f, 0.0f, 0.0f);
     myvirtualworld_charizard.draw();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(15.0f, 0.0f, 0.0f);
+    glTranslatef(70.0f, 0.0f, 0.0f);
     myvirtualworld_blastoise.draw();
     glPopMatrix();
 
