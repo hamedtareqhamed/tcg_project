@@ -223,7 +223,7 @@ void myDataInit()
  // Setup camera position (slightly pulled back on Z-axis)
  viewer.eyeX    = 0.0;
  viewer.eyeY    = 0.0;
- viewer.eyeZ    = 40.0;
+ viewer.eyeZ    = 150.0;
  viewer.centerX = 0.0;
  viewer.centerY = 0.0;
  viewer.centerZ = 0.0;
@@ -231,7 +231,7 @@ void myDataInit()
  viewer.upY     = 1.0;
  viewer.upZ     = 0.0;
  viewer.zNear   = 0.1;
- viewer.zFar    = 500.0;
+ viewer.zFar    = 1500.0;
  viewer.fieldOfView = 60.0;
  viewer.aspectRatio = static_cast<GLdouble> (window.width) / window.height;
 
