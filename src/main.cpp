@@ -5,12 +5,14 @@
 #include <GL/glut.h>
 
 #include "main.hpp"
-#include "charizardx.hpp"
-//hamed: include my header
 #include "charizardy.hpp"
+#include "MyDetailedBlastoise.hpp"
+//#include "Project.hpp"
+
 using charizardx::MyVirtualWorld;
-//hamed: Global instance of the Charizard Y virtual world
-Project::MyVirtualWorld myvirtualworld_y;
+//using BlastoiseLab::MyVirtualWorld;
+//using Project::MyVirtualWorld;
+
 // Global instance of the Charizard X virtual world
 MyVirtualWorld myvirtualworld;
 
@@ -43,8 +45,7 @@ void myDisplayFunc(void)
 
     // Render the Charizard X model and environment
     myvirtualworld.draw();
-    //hamed:Render the Charizard X model
-    myvirtualworld_y.draw();
+
  glPopMatrix();
 
  // Force execution of GL commands and swap the double buffers
@@ -53,8 +54,6 @@ void myDisplayFunc(void)
 
  // Update animation timers and request a screen redraw for continuous animation
  myvirtualworld.tickTime();
- //hamed:update ticktime
- myvirtualworld_y.tickTime();
  glutPostRedisplay();
 }
 
@@ -80,8 +79,11 @@ void myKeyboardFunc(unsigned char key, int x, int y)
     case 'e': case 'E': yinc =  setting.posInc;  break;
     case 'w': case 'W': zinc = -setting.posInc;  break;
     case 's': case 'S': zinc =  setting.posInc;  break;
-    //hamed: added my skill button
-    case '1': myvirtualworld_y.charizard.castSkill(); break;
+
+    //case 'o': case 'O': myvirtualworld.triggerBoxOpen(); break;
+
+    //case 'c': case 'C': myvirtualworld.charizard.castSkill(); break;
+
     // Toggle animations for Charizard X
     case 'r': case 'R': myvirtualworld.toggleWalking(); break;
     case 'f': case 'F': myvirtualworld.toggleFireBreath(); break;
@@ -261,7 +263,7 @@ void myLightingInit()
  static GLfloat position[] = {10.0f, 10.0f, 10.0f, 1.0f }; // Overhead light source
  short shininess = 128;
 
- glDisable(GL_LIGHTING);
+ glEnable(GL_LIGHTING);
  glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
  glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
  glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
@@ -314,8 +316,6 @@ void myInit()
 
  // Initialize the Mega Charizard X model
  myvirtualworld.init();
- myvirtualworld_y.init();
- myvirtualworld_y.charizard.setPosition(30.0f, 0.0f, 0.0f);
 }
 
 // Print control instructions to the console
