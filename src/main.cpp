@@ -270,7 +270,7 @@ void myLightingInit()
  static GLfloat  diffuse[] = { 1.0f,  1.0f,  1.0f, 1.0f };
  static GLfloat specular[] = { 1.0f,  1.0f,  1.0f, 1.0f };
  static GLfloat  specref[] = { 1.0f,  1.0f,  1.0f, 1.0f };
- static GLfloat position[] = {10.0f, 10.0f, 10.0f, 1.0f }; // Overhead light source
+ static GLfloat position[] = {10.0f, 10.0f, 10.0f, 0.0f }; // Overhead light source
  short shininess = 128;
 
  glEnable(GL_LIGHTING);

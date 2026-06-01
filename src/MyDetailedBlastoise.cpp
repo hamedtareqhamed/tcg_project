@@ -780,7 +780,7 @@ void BlastoiseLab::MyDetailedBlastoise::draw()
     glPopMatrix();
 
     // glDisable(GL_COLOR_MATERIAL);
-    glDisable(GL_NORMALIZE);
+    // glDisable(GL_NORMALIZE);
 
     if (lightingWasOn == GL_TRUE)
     {
