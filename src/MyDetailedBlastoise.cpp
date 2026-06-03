@@ -802,7 +802,8 @@ BlastoiseLab::MyVirtualWorld::MyVirtualWorld()
       battleClock(0.0f),
       hasBox(true),
       isOpening(false),
-      boxTime(0.0f)
+      boxTime(0.0f),
+      environmentActive(true)
 {
 }
 
@@ -814,6 +815,7 @@ void BlastoiseLab::MyVirtualWorld::init()
     hasBox = true;
     isOpening = false;
     boxTime = 0.0f;
+    environmentActive = true;
 }
 
 void BlastoiseLab::MyVirtualWorld::drawBlueArena()
@@ -1132,7 +1134,10 @@ void BlastoiseLab::MyVirtualWorld::drawPokeballBox()
 
 void BlastoiseLab::MyVirtualWorld::draw()
 {
-    drawEnvironment();
+    if (environmentActive)
+    {
+        drawEnvironment();
+    }
 
     if (hasBox)
     {
@@ -1231,4 +1236,12 @@ void BlastoiseLab::MyVirtualWorld::triggerBoxOpen()
 bool BlastoiseLab::MyVirtualWorld::isBattlePhase() const
 {
     return battlePhase;
+}
+void BlastoiseLab::MyVirtualWorld::setEnvironmentActive(bool active)
+{
+    environmentActive = active;
+}
+bool BlastoiseLab::MyVirtualWorld::isEnvironmentActive() const
+{
+    return environmentActive;
 }

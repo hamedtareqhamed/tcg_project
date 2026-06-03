@@ -108,6 +108,16 @@ void myKeyboardFunc(unsigned char key, int x, int y)
     case 'O': myvirtualworld_blastoise.triggerBoxOpen(); break;
     case 'c': case 'C': myvirtualworld_blastoise.castBlastoiseSkill(); break;
     case 'b': case 'B': myvirtualworld_blastoise.toggleBattlePhase(); break;
+    case 'v': {
+        bool current = myvirtualworld_charizard.isEnvironmentActive();
+        myvirtualworld_charizard.setEnvironmentActive(!current);
+        break;
+    }
+    case 'V':{
+        bool current = myvirtualworld_blastoise.isEnvironmentActive();
+        myvirtualworld_blastoise.setEnvironmentActive(!current);
+        break;
+    }
 
     case 27  : exit(1); break; // ESC to exit
  }
@@ -337,6 +347,10 @@ void myInit()
  myvirtualworld_charizard.init();
  myvirtualworld_blastoise.init();
  myvirtualworld_arena.init();
+
+ // Turn off character environments by default
+ myvirtualworld_charizard.setEnvironmentActive(false);
+ myvirtualworld_blastoise.setEnvironmentActive(false);
 }
 
 // Print control instructions to the console
@@ -356,6 +370,7 @@ void myWelcome()
  cout << "|   F1                      => toggle shading / wire-frame mode |\n";
  cout << "|   F2                      => toggle rendering of axes         |\n";
  cout << "|   F3                      => toggle lighting on / off         |\n";
+ cout << "|   <v> <V>                    => toggle character environments     |\n";
  cout << "|                                                               |\n";
  cout << "| Mouse (Left Drag or Right Drag) => rotate world               |\n";
  cout << "| Character Actions:                                            |\n";

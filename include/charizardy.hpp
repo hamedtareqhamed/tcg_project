@@ -20,6 +20,8 @@ namespace charizardx {
         void toggleFlying();
 
         void triggerBoxOpen();
+        void setEnvironmentActive(bool active);
+        bool isEnvironmentActive() const;
 
     private:
         // Helper functions for drawing individual body parts
@@ -57,6 +59,7 @@ namespace charizardx {
         bool hasBox;
         bool isOpening;
         float boxTime;
+        bool environmentActive;
     };
 
 }

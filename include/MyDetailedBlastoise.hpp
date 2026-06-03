@@ -89,6 +89,7 @@ private:
     bool hasBox;
     bool isOpening;
     float boxTime;
+    bool environmentActive;
 
     void drawEnvironment();
     void drawBlueArena();
@@ -99,6 +100,8 @@ public:
     void init();
     void draw();
     void tickTime();
+    void setEnvironmentActive(bool active);
+    bool isEnvironmentActive() const;
 
     void toggleBattlePhase();
     void castBlastoiseSkill();

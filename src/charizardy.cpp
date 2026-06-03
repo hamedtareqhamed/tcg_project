@@ -75,6 +75,7 @@ namespace charizardx {
         hasBox = true;
         isOpening = false;
         boxTime = 0.0f;
+        environmentActive = true;
     }
 
     // Update animation timers per frame
@@ -144,10 +145,12 @@ namespace charizardx {
         glPushMatrix();
 
         // 1. Render Environment (Moves with the dragon to create an infinite treadmill effect)
-        glPushMatrix();
-        glTranslatef(0.0f, 0.0f, walkDistance);
-        drawEnvironment();
-        glPopMatrix();
+        if (environmentActive) {
+            glPushMatrix();
+            glTranslatef(0.0f, 0.0f, walkDistance);
+            drawEnvironment();
+            glPopMatrix();
+        }
 
         if (hasBox) {
             drawBlindBox();
@@ -1280,5 +1283,11 @@ namespace charizardx {
         glPopMatrix();
 
         glPopMatrix();
+    }
+    void MyVirtualWorld::setEnvironmentActive(bool active) {
+        environmentActive = active;
+    }
+    bool MyVirtualWorld::isEnvironmentActive() const {
+        return environmentActive;
     }
 }
