@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <cmath>
 #include <GL/glut.h>
-
+#include "battleArena.hpp"
 #include "main.hpp"
 #include "charizardy.hpp"
 #include "MyDetailedBlastoise.hpp"
@@ -14,7 +14,7 @@
 // Global instances of the virtual worlds
 charizardx::MyVirtualWorld myvirtualworld_charizard;
 BlastoiseLab::MyVirtualWorld myvirtualworld_blastoise;
-
+battleArena::MyVirtualWorld myvirtualworld_arena;
 using namespace std;
 
 // Global configuration variables defined in main.hpp
@@ -41,9 +41,13 @@ void myDisplayFunc(void)
 
     // Render the XYZ reference axis
     worldaxis.draw();
-
     glPushMatrix();
     glTranslatef(-70.0f, 0.0f, 0.0f);
+    myvirtualworld_arena.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0.0f, 0.0f, 0.0f);
     myvirtualworld_charizard.draw();
     glPopMatrix();
 
@@ -61,6 +65,7 @@ void myDisplayFunc(void)
  // Update animation timers and request a screen redraw for continuous animation
  myvirtualworld_charizard.tickTime();
  myvirtualworld_blastoise.tickTime();
+ myvirtualworld_arena.tickTime();
  glutPostRedisplay();
 }
 
@@ -327,6 +332,7 @@ void myInit()
  // Initialize the models
  myvirtualworld_charizard.init();
  myvirtualworld_blastoise.init();
+ myvirtualworld_arena.init();
 }
 
 // Print control instructions to the console
