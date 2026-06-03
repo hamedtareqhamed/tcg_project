@@ -42,17 +42,21 @@ void myDisplayFunc(void)
     // Render the XYZ reference axis
     worldaxis.draw();
     glPushMatrix();
-    glTranslatef(-70.0f, 0.0f, 0.0f);
-    myvirtualworld_arena.draw();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslatef(0.0f, 0.0f, 0.0f);
+    glTranslatef(-60.0f, 20.0f, 0.0f);
+    glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
     myvirtualworld_charizard.draw();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(70.0f, 0.0f, 0.0f);
+    glTranslatef(0.0f, 0.0f, 0.0f);
+    glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
+    glScalef(2.0f, 2.0f, 2.0f);
+    myvirtualworld_arena.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(60.0f, 20.0f, 0.0f);
+    glRotatef(-90.0f, 0.0f, 1.0f, 0.0f);
     myvirtualworld_blastoise.draw();
     glPopMatrix();
 
